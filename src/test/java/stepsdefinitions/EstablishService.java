@@ -1,4 +1,4 @@
-package stepdefinitions;
+package stepsdefinitions;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
