@@ -9,7 +9,7 @@ public class EstablishService {
 
     protected static final Actor actor = new Actor(ACTOR);
 
-    protected void establishService(String urlBase){
+    protected static void establishService(String urlBase){
         actor.can(CallAnApi.at(urlBase));
     }
 }

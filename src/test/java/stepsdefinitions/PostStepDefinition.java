@@ -21,7 +21,7 @@ import static utils.Constants.BASE_URL;
 
 public class PostStepDefinition extends EstablishService{
     @Dado("un usuario obtiene la baseurl de la api")
-    public void unUsuarioObtieneLaBaseurlDeLaApi() {
+    public static void unUsuarioObtieneLaBaseurlDeLaApi() {
         OnStage.setTheStage(new OnlineCast());
         OnStage.theActorCalled(ACTOR);
         OnStage.theActorCalled(ACTOR).whoCan(CallAnApi.at(BASE_URL));
@@ -29,7 +29,7 @@ public class PostStepDefinition extends EstablishService{
     }
 
     @Cuando("envia una solicitud POST para consumir el recurso {string} con el nombre {string} y el estado {string}")
-    public void enviaUnaSolicitudPOSTParaConsumirElRecursoConElNombreYElEstado(String recurso, String nombre, String estado) {
+    public static void enviaUnaSolicitudPOSTParaConsumirElRecursoConElNombreYElEstado(String recurso, String nombre, String estado) {
         Map<String, Object> cuerpo = Map.of(
                 "id", 0,
                 "category", Map.of("id", 0, "name", "String"),
