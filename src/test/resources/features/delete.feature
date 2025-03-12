@@ -2,7 +2,10 @@
 
 Característica: Consumo con serenity-rest del verbo DELETE
 
-  Escenario: Eliminar una mascota
-    Dado se tiene creada una mascota
-    Cuando configura la peticion a consumir con el recurso "/pet/{petId}" y el id almacenado
+  Esquema del escenario: Eliminar una mascota
+    Dado se tiene creada a una mascota
+    Cuando configura la peticion a consumir con el recurso "<recurso>" y el id de la mascota creada
     Entonces valida el estado de dicha peticion
+    Ejemplos:
+    |recurso|
+    |pet   |
