@@ -23,8 +23,6 @@ public class PostStepDefinition extends EstablishService{
     @Dado("un usuario obtiene la baseurl de la api")
     public static void unUsuarioObtieneLaBaseurlDeLaApi() {
         OnStage.setTheStage(new OnlineCast());
-        OnStage.theActorCalled(ACTOR);
-        OnStage.theActorCalled(ACTOR).whoCan(CallAnApi.at(BASE_URL));
         establishService(BASE_URL);
     }
 
@@ -39,7 +37,7 @@ public class PostStepDefinition extends EstablishService{
                 "status", estado
         );
 
-        theActorInTheSpotlight().attemptsTo(
+        actor.attemptsTo(
                 ConsumeServicePost.hacerConsumoPost()
                         .conRecursoYCuerpo(recurso, cuerpo)
         );
@@ -47,7 +45,7 @@ public class PostStepDefinition extends EstablishService{
 
     @Entonces("valida el estado de dicha petición")
     public void validaElEstadoDeDichaPetición() {
-        theActorInTheSpotlight().should(
+        actor.should(
                 seeThat("El estado de respuesta: ",
                         PostQuestion.postQuestion(),equalTo(SC_OK))
         );
