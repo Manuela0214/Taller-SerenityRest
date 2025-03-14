@@ -13,18 +13,18 @@ import static tasks.ConsumeServicePut.makeConsumePut;
 
 public class PutStepDefinition extends EstablishService{
 
-    @Dado("se tiene una mascota creada")
-    public void seTieneUnaMascotaCreada() {
+    @Dado("se tiene una mascota creada con el recurso {string} nombre {string} y estado {string}")
+    public void seTieneUnaMascotaCreadaConElRecursoNombreYEstado(String recurso, String nombre, String estado) {
         unUsuarioObtieneLaBaseurlDeLaApi();
-        enviaUnaSolicitudPOSTParaConsumirElRecursoConElNombreYElEstado("pet", "doggie", "available");
+        enviaUnaSolicitudPOSTParaConsumirElRecursoConElNombreYElEstado(recurso, nombre, estado);
     }
 
     @Cuando("configura la peticion a consumir el recurso {string} con el nombre {string} actualizado")
-    public void configuraLaPeticionAConsumirElRecursoConElNombreActualizado(String recurso, String nombre) {
+    public void configuraLaPeticionAConsumirElRecursoConElNombreActualizado(String recurso, String nuevo_nombre) {
         Map<String, Object> cuerpo = Map.of(
                 "id", 0,
                 "category", Map.of("id", 0, "name", "string"),
-                "name", nombre,
+                "name", nuevo_nombre,
                 "photoUrls", List.of("string"),
                 "tags", List.of(Map.of("id", 0, "name", "string")),
                 "status", "available"
@@ -41,7 +41,4 @@ public class PutStepDefinition extends EstablishService{
                 seeThat(PutQuestion.putQuestion(), equalTo("Firulais"))
         );
     }
-
-
-
 }

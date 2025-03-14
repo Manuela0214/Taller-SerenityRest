@@ -14,10 +14,11 @@ import static stepsdefinitions.PostStepDefinition.unUsuarioObtieneLaBaseurlDeLaA
 import static tasks.ConsumeServiceDelete.makeConsumeDelete;
 
 public class DeletestepDefinition {
-    @Dado("se tiene creada a una mascota")
-    public void seTieneCreadaAUnaMascota() {
+
+    @Dado("se tiene creada a una mascota con el recurso {string} nombre {string} y estado {string}")
+    public void seTieneCreadaAUnaMascotaConElRecursoNombreYEstado(String recurso, String nombre, String estado) {
         unUsuarioObtieneLaBaseurlDeLaApi();
-        enviaUnaSolicitudPOSTParaConsumirElRecursoConElNombreYElEstado("pet", "doggie", "available");
+        enviaUnaSolicitudPOSTParaConsumirElRecursoConElNombreYElEstado(recurso, nombre, estado);
     }
 
     @Cuando("configura la peticion a consumir con el recurso {string} y el id de la mascota creada")
@@ -36,6 +37,7 @@ public class DeletestepDefinition {
                 seeThat("Código respuesta", deleteQuestion(), equalTo(SC_OK))
         );
     }
+
 
 }
 

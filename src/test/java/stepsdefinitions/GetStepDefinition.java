@@ -12,10 +12,11 @@ import static stepsdefinitions.PostStepDefinition.unUsuarioObtieneLaBaseurlDeLaA
 import static tasks.ConsumeServiceGet.makeConsumeGet;
 
 public class GetStepDefinition extends EstablishService{
-    @Dado("se tiene creada una mascota")
-    public void seTieneCreadaUnaMascota() {
+
+    @Dado("se tiene creada una mascota con el recurso {string} nombre {string} y estado {string}")
+    public void seTieneCreadaUnaMascotaConElRecursoNombreYEstado(String recurso, String nombre, String estado) {
         unUsuarioObtieneLaBaseurlDeLaApi();
-        enviaUnaSolicitudPOSTParaConsumirElRecursoConElNombreYElEstado("pet", "romeo", "available");
+        enviaUnaSolicitudPOSTParaConsumirElRecursoConElNombreYElEstado(recurso, nombre, estado);
     }
 
     @Cuando("configura la peticion a consumir con el recurso {string} y el id almacenado")
@@ -30,7 +31,7 @@ public class GetStepDefinition extends EstablishService{
     @Entonces("valida el nombre de la mascota")
     public void validaElNombreDeLaMascota() {
         actor.should(
-                seeThat(getQuestion(), equalTo("romeo"))
+                seeThat(getQuestion(), equalTo("Romeo"))
         );
     }
 }

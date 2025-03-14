@@ -27,7 +27,7 @@ public class PostStepDefinition extends EstablishService{
                 "id", 0,
                 "category", Map.of("id", 0, "name", "String"),
                 "name", nombre,
-                "photoUrls", List.of("https://example.com/image.jpg"),
+                "photoUrls", List.of("String"),
                 "tags", List.of(Map.of("id", 0, "name", "String")),
                 "status", estado
         );
