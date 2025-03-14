@@ -6,11 +6,10 @@ import io.cucumber.java.es.Entonces;
 import questions.PutQuestion;
 import java.util.List;
 import java.util.Map;
-
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.equalTo;
 import static stepsdefinitions.PostStepDefinition.*;
-import static tasks.ConsumeServicePut.hacerConsumoPut;
+import static tasks.ConsumeServicePut.makeConsumePut;
 
 public class PutStepDefinition extends EstablishService{
 
@@ -32,7 +31,7 @@ public class PutStepDefinition extends EstablishService{
         );
 
         actor.attemptsTo(
-                hacerConsumoPut().conService(recurso, cuerpo)
+                makeConsumePut().conService(recurso, cuerpo)
         );
     }
 

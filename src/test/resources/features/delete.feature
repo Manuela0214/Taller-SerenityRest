@@ -8,4 +8,4 @@ Característica: Consumo con serenity-rest del verbo DELETE
     Entonces valida el estado de dicha peticion
     Ejemplos:
     |recurso|
-    |pet   |
+    |pet    |

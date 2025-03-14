@@ -7,5 +7,5 @@ Característica: Consumo con serenity-rest del verbo GET
     Cuando configura la peticion a consumir con el recurso "<recurso>" y el id almacenado
     Entonces valida el nombre de la mascota
     Ejemplos:
-      |recurso       |
-      |pet   |
+    |recurso|
+    |pet    |

@@ -2,28 +2,28 @@ package tasks;
 
 import interactions.PutRequest;
 import io.restassured.http.ContentType;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-
 import java.util.Map;
-
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class ConsumeServicePut implements Task {
 
-    private String recurso;
-    private Map<String, Object> cuerpo;
+    private String resource;
+    private Map<String, Object> body;
 
-    public ConsumeServicePut conService(String recurso, Map<String, Object> cuerpo) {
-        this.recurso = recurso;
-        this.cuerpo = cuerpo;
+    public ConsumeServicePut conService(String resource, Map<String, Object> body) {
+        this.resource = resource;
+        this.body = body;
         return this;
     }
 
     @Override
+    @Step("{0} actualiza la informacion de una mascota")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                PutRequest.recurso(recurso,cuerpo)
+                PutRequest.resource(resource,body)
                         .with(
                                 requestSpecification -> requestSpecification
                                         .contentType(ContentType.JSON)
@@ -32,7 +32,7 @@ public class ConsumeServicePut implements Task {
         );
     }
 
-    public static ConsumeServicePut hacerConsumoPut(){
+    public static ConsumeServicePut makeConsumePut(){
         return instrumented(ConsumeServicePut.class);
     }
 }

@@ -5,18 +5,13 @@ import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import questions.PostQuestion;
 import tasks.ConsumeServicePost;
-
 import java.util.List;
 import java.util.Map;
-
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static utils.Constants.ACTOR;
 import static utils.Constants.BASE_URL;
 
 public class PostStepDefinition extends EstablishService{
@@ -38,8 +33,8 @@ public class PostStepDefinition extends EstablishService{
         );
 
         actor.attemptsTo(
-                ConsumeServicePost.hacerConsumoPost()
-                        .conRecursoYCuerpo(recurso, cuerpo)
+                ConsumeServicePost.makeConsumePost()
+                        .conService(recurso, cuerpo)
         );
     }
 
