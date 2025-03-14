@@ -1,5 +1,6 @@
 package interactions;
 
+import lombok.AllArgsConstructor;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.rest.interactions.RestInteraction;
@@ -10,26 +11,22 @@ import org.slf4j.LoggerFactory;
 import io.restassured.http.ContentType;
 import java.util.Map;
 
+@AllArgsConstructor
 public class PostRequest extends RestInteraction {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PostRequest.class);
-    private final String recurso;
-    private final Map<String, Object> cuerpo;
+    private final String resource;
+    private final Map<String, Object> body;
     public static String petId;
-
-    public PostRequest(String recurso, Map<String, Object> cuerpo) {
-        this.recurso = recurso;
-        this.cuerpo = cuerpo;
-    }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        LOGGER.info("El usuario esta enviando una solicitud POST para consumir el recurso {}", recurso);
+        LOGGER.info("El usuario esta enviando una solicitud POST para consumir el recurso {}", resource);
         rest()
                 .log().all()
                 .contentType(ContentType.JSON)
-                .body(cuerpo)
-                .post(as(actor).resolve(recurso))
+                .body(body)
+                .post(as(actor).resolve(resource))
                 .then().log().all();
         petId = SerenityRest.lastResponse().jsonPath().getString("id");
         LOGGER.info("ID de la mascota guardado correctamente: " + petId);
@@ -37,8 +34,8 @@ public class PostRequest extends RestInteraction {
 
     }
 
-    public static PostRequest conDatos(String recurso, Map<String, Object> cuerpo) {
-        return instrumented(PostRequest.class, recurso, cuerpo);
+    public static PostRequest resource(String resource, Map<String, Object> body) {
+        return instrumented(PostRequest.class, resource, body);
 
     }
 }

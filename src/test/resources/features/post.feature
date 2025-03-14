@@ -7,5 +7,5 @@ Característica: Consumo con serenity-rest del verbo POST
     Cuando envia una solicitud POST para consumir el recurso "<recurso>" con el nombre "<nombre>" y el estado "<estado>"
     Entonces valida el estado de dicha petición
     Ejemplos:
-      |recurso|nombre|estado|
-      |pet    |Romeo |available|
+    |recurso|nombre|estado   |
+    |pet    |Romeo |available|
